@@ -21,26 +21,6 @@ void setup() {
 
 void loop() {
     if (bleGamepad.isConnected()) {
-        // Simulate button presses
-        // bleGamepad.press(BUTTON_2);
-        // delay(1000);
-        // bleGamepad.release(BUTTON_2);
-        // delay(1000);
-
-        // if(!digitalRead(PUSH_BUTTON)){
-        //     bleGamepad.press(BUTTON_1);
-        // }
-        // else{
-        //     bleGamepad.release(BUTTON_1);
-        // }
-
-        // if(!digitalRead(PUSH_BUTTON2)){
-        //     bleGamepad.press(BUTTON_2);
-        // }
-        // else{
-        //     bleGamepad.release(BUTTON_2);
-        // }
-
         button_press(PUSH_BUTTON, BUTTON_1);
         button_press(PUSH_BUTTON2, BUTTON_2);
 
