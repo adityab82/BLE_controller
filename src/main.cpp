@@ -11,7 +11,6 @@ BleGamepad bleGamepad;
 void setup() {
     bleGamepad.begin();
     Serial.begin(115200);
-    // // Serial.begin(9600);
     pinMode(PUSH_BUTTON, INPUT_PULLUP); 
     pinMode(PUSH_BUTTON2, INPUT_PULLUP);
     pinMode(SW1, INPUT_PULLUP);
@@ -29,24 +28,20 @@ void loop() {
         int xval = analogRead(VX1);
         int yval = analogRead(VY1);
 
-        int xGamepad = map(xval, 0, 4095, -127, 127);
-        int yGamepad = map(yval, 0, 4095, -127, 127);
+        int xGamepad = map(xval, 4095, 0, 0, 32737);
+        int yGamepad = map(yval, 4095, 0, 0, 32737);
 
-
-        // Simulate joystick movement
-        bleGamepad.setAxes(xGamepad, yGamepad, 0, 0, 0, 0);
-        // delay(1000);
-        // bleGamepad.setAxes(0, 0, 0, 0, 0, 0);
-        // delay(1000);
-        // Serial.print("X axis: ");
-        // Serial.println(analogRead(VX1));
-        // Serial.print("Y axis: ");
-        // Serial.println(analogRead(VY1));
-        // Serial.print("X axis: ");
-        // Serial.println(xGamepad);
-        // Serial.print("Y axis: ");
-        // Serial.println(yGamepad);
-        // delay(400);
+        if (false) {
+            xGamepad = 32737 - xGamepad;
+            if (xGamepad < 0)
+                xGamepad = -xGamepad;
+        }
+        if (true) {
+            yGamepad = 32737 - yGamepad;
+            if (yGamepad < 0)
+                yGamepad = -yGamepad;
+        }
+        bleGamepad.setLeftThumb(xGamepad, yGamepad);
     }
 }
 
