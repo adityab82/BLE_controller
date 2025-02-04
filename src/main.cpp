@@ -71,18 +71,36 @@
 
 BleGamepad bleGamepad;
 
-const int centerX = 2900;
-const int centerY = 2900;
-const int deadzone = 30; 
 
 void setup() {
     bleGamepad.begin();
     Serial.begin(115200);
+    analogSetAttenuation(ADC_11db);
     pinMode(PUSH_BUTTON, INPUT_PULLUP); 
     pinMode(PUSH_BUTTON2, INPUT_PULLUP);
     pinMode(SW1, INPUT_PULLUP);
     pinMode(VX1, INPUT);
     pinMode(VY1, INPUT);
+    // delay(20000);
+
+    // long sumX = 0;
+    // long sumY = 0;
+
+
+    // for (int i = 0; i < NUM_SAMPLES; i++) {
+    //         sumX += analogRead(VX1);
+    //         sumY += analogRead(VY1);
+    //         delay(10);
+    // }
+
+    // int centerX = sumX / NUM_SAMPLES;
+    // int centerY = sumY / NUM_SAMPLES;
+    
+    // // Print the calculated center values
+    // Serial.print("Center X: ");
+    // Serial.println(centerX);
+    // Serial.print("Center Y: ");
+    // Serial.println(centerY);
 }
 
 void loop() {

@@ -1,31 +1,25 @@
 #include <Arduino.h>
 #include "joystick.h"
 
+const int centerX = 2869;
+const int centerY = 2976;
+const int deadzone = 100; 
+const int realCenter = 2048;
+
 void printAnalogValues(int inputX, int inputY){
+        int xGamepad, yGamepad;
+        int16_t xval = analogRead(VX1);
+        int16_t yval = analogRead(VY1);
 
-        int xval = analogRead(VX1);
-        int yval = analogRead(VY1);
+        int dx = xval - centerX;
+        int dy = yval - centerY;
 
-        xval = map(xval, 0, 4095, -32768, 32767);
-        yval= map(yval, 0, 4095, -32768, 32767);
+        //center the joystick if there is no significant movement detected
+        if(abs(dx) < deadzone) xGamepad = map(realCenter, 0, 4095, (centerX - realCenter), 32767);
+        else if(abs(dx) > deadzone) xGamepad = map(xval, 0, 4095, (centerX - realCenter), 32767);
 
-        xval = constrain(xval, -32768, 32767);
-        yval = constrain(yval, -32768, 32767);
+        if(abs(dy) < deadzone) yGamepad = map(realCenter, 0, 4095, (centerY - realCenter), 32767);
+        else if(abs(dy) > deadzone) yGamepad = map(yval, 0, 4095, (centerY - realCenter), 32767);
 
-        // if(xval > 32737) xval = 32737;
-        // if(xval < - 32768) xval = -32768;
-
-        // if(yval > 32737) yval = 32737;
-        // if(yval < - 32768) yval = -32768;
-
-        // xval = -xval;
-        // yval = -yval;
-
-        bleGamepad.setLeftThumb(xval, yval);
-
-        Serial.print("X center: ");
-        Serial.println(xval);
-        Serial.print("Y center: ");
-        Serial.println(yval);
-        // delay(500);  
+        bleGamepad.setLeftThumb(xGamepad, yGamepad);
 }
