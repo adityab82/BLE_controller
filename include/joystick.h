@@ -9,6 +9,6 @@
 #define VY1 15
 #define SW1 13
 
-void printAnalogValues(int inputX, int inputY);
+void joystickControl(int inputX, int inputY);
 
 #endif
