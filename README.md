@@ -6,7 +6,7 @@ To ensure that the right joystick works as expected, I needed to make a change i
 
 Now the right joystick works as expected
 
-##Solidworks Model
+## Solidworks Model
 
 ![alt text](image-1.png)
 
