@@ -16,22 +16,21 @@ void calibrateJoystick(JoystickConfig &jsConfig){
         jsConfig.centerY = sumY / NUM_SAMPLES;
         
         // Print the calculated center values
-        if(jsConfig.isLeft){
+        if (jsConfig.isLeft){
                 Serial.println("For Left Joystick: ");
                 Serial.print("Center X: ");
                 Serial.println(jsConfig.centerX);
                 Serial.print("Center Y: ");
                 Serial.println(jsConfig.centerY);
         }
-        if(!jsConfig.isLeft){
+        else {
                 Serial.println("For Right Joystick: ");
                 Serial.print("Center X: ");
                 Serial.println(jsConfig.centerX);
                 Serial.print("Center Y: ");
                 Serial.println(jsConfig.centerY);
         }
-}
-        
+}      
 
 // void joystickControl(int inputPinX, int inputPinY){
 //         int xGamepad, yGamepad;
@@ -71,6 +70,7 @@ void joystickControl(const JoystickConfig &jsConfig){
         else
                 bleGamepad.setRightThumb(xGamepad, yGamepad);
 }
+
 
 // void joystickControlScaled(int inputX, int inputY){     //TODO
 //         int xGamepad, yGamepad;
