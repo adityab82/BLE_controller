@@ -5,9 +5,16 @@
 #include <BleGamepad.h>
 
 // X on pin 32 and Y on pin 15 work
-#define VX1 32
-#define VY1 15
-#define SW1 13
+#define VX1 15
+#define VY1 4
+#define VX2 27
+#define VY2 14
+// #define VX1 4
+// #define VY1 15
+// #define VX2 14
+// #define VY2 27
+#define SW1 5
+#define SW2 13
 #define NUM_SAMPLES 200
 
 // const int centerX = 2869;

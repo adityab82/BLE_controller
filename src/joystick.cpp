@@ -32,22 +32,25 @@ void calibrateJoystick(JoystickConfig &jsConfig){
         }
 }      
 
-// void joystickControl(int inputPinX, int inputPinY){
+// void joystickControl(const JoystickConfig &jsConfig){
 //         int xGamepad, yGamepad;
-//         int16_t xval = analogRead(VX1);
-//         int16_t yval = analogRead(VY1);
+//         int16_t xval = analogRead(jsConfig.analogXPin);
+//         int16_t yval = analogRead(jsConfig.analogYPin);
 
-//         int dx = xval - centerX;
-//         int dy = yval - centerY;
+//         int dx = xval - jsConfig.centerX;
+//         int dy = yval - jsConfig.centerY;
 
 //         //center the joystick if there is no significant movement detected
-//         if(abs(dx) < deadzone) xGamepad = map(realCenter, 0, 4095, (centerX - realCenter), 32767);
-//         else if(abs(dx) >= deadzone) xGamepad = map(xval, 0, 4095, (centerX - realCenter), 32767);
+//         if(abs(dx) < jsConfig.deadzone) xGamepad = map(jsConfig.realCenter, 0, 4095, (jsConfig.centerX - jsConfig.realCenter), 32767);
+//         else if(abs(dx) >= jsConfig.deadzone) xGamepad = map(xval, 0, 4095, (jsConfig.centerX - jsConfig.realCenter), 32767);
 
-//         if(abs(dy) < deadzone) yGamepad = map(realCenter, 0, 4095, (centerY - realCenter), 32767);
-//         else if(abs(dy) >= deadzone) yGamepad = map(yval, 0, 4095, (centerY - realCenter), 32767);
+//         if(abs(dy) < jsConfig.deadzone) yGamepad = map(jsConfig.realCenter, 0, 4095, (jsConfig.centerY - jsConfig.realCenter), 32767);
+//         else if(abs(dy) >= jsConfig.deadzone) yGamepad = map(yval, 0, 4095, (jsConfig.centerY - jsConfig.realCenter), 32767);
 
-//         bleGamepad.setLeftThumb(xGamepad, yGamepad);
+//         if (jsConfig.isLeft)
+//                 bleGamepad.setLeftThumb(xGamepad, yGamepad);
+//         else
+//                 bleGamepad.setRightThumb(xGamepad, yGamepad);
 // }
 
 void joystickControl(const JoystickConfig &jsConfig){
@@ -70,7 +73,6 @@ void joystickControl(const JoystickConfig &jsConfig){
         else
                 bleGamepad.setRightThumb(xGamepad, yGamepad);
 }
-
 
 // void joystickControlScaled(int inputX, int inputY){     //TODO
 //         int xGamepad, yGamepad;
