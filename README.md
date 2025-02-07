@@ -12,6 +12,6 @@ Now the right joystick works as expected
 
 
 ## Circuit
-![alt text](Circuit_I)
-![alt text](Circuit_II)
+![alt text](Circuit_I.jpg)
+![alt text](Circuit_II.jpg)
 
