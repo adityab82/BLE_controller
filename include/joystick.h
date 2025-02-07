@@ -43,8 +43,8 @@ struct JoystickConfig {
 };
 
 void calibrateJoystick(JoystickConfig &jsConfig);
-// void joystickControl(int inputPinX, int inputPinY);
 void joystickControl(const JoystickConfig &jsConfig);
-void joystickControlScaled(int inputPinX, int inputPinY);
+// void joystickControlScaled(int inputPinX, int inputPinY);
+void logCalibrationData(const JoystickConfig &jsConfig);
 
 #endif

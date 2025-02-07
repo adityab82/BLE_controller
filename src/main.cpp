@@ -2,6 +2,7 @@
 #include <BleGamepad.h>
 #include <button.h>
 #include <joystick.h>
+#include <LittleFS.h>
 
 // Left Joystick
 JoystickConfig leftJoystick = {
@@ -28,8 +29,17 @@ JoystickConfig rightJoystick = {
 BleGamepad bleGamepad;
 
 void setup() {
-    bleGamepad.begin();
     Serial.begin(115200);
+    delay(1000);
+
+    // 1) Mount LITTLEFS
+    if (!LITTLEFS.begin(false)) {
+        Serial.println("LITTLEFS Mount Failed!");
+    } else {
+        Serial.println("LITTLEFS mounted successfully.");
+    }
+
+    bleGamepad.begin();
     analogSetAttenuation(ADC_11db);
 
     // pinMode(PUSH_BUTTON, INPUT_PULLUP); 
