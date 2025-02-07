@@ -64,13 +64,10 @@ void logCalibrationData(const JoystickConfig &jsConfig) {
         return;
     }
 
-    // Simple timestamp using millis() since power-on
     unsigned long currentTime = millis();
 
-    // Identify which joystick was calibrated
     const char *whichJs = jsConfig.isLeft ? "Left" : "Right";
 
-    // Write the line: time, joystick label, and centers
     logFile.printf("Time: %lu ms, Joystick: %s, centerX: %d, centerY: %d\n",
                    currentTime, whichJs, jsConfig.centerX, jsConfig.centerY);
 
